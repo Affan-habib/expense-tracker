@@ -4,7 +4,7 @@ let nextCategoryId = 0;
 
 const categoriesSlice = createSlice({
   name: "categories",
-  initialState: [],
+  initialState: ["personal", "official"],
   reducers: {
     addCategory(state, action) {
       state.push({
@@ -12,12 +12,7 @@ const categoriesSlice = createSlice({
         text: action.payload,
       });
     },
-    toggleCategory(state, action) {
-      const Category = state.find((Category) => Category.id === action.payload);
-      if (Category) {
-        Category.completed = !Category.completed;
-      }
-    },
+    
   },
 });
 
