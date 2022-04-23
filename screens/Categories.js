@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function Categories() {
   const categories = useSelector((state) => state.categories);
-  console.log(categories);
+  // console.log(categories);
   return (
     <View>
       {categories.map((category, index) => (

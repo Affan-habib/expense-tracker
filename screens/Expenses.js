@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
+
 export default function Expenses() {
   const expenses = useSelector((state) => state.expenses);
   const cost = expenses.reduce((accumulator, object) => {
@@ -17,13 +18,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    backgroundColor: '#00669a',
+    backgroundColor: "#00669a",
   },
   cost: {
     fontSize: 22,
     color: "white",
-    textAlign: 'center',
+    textAlign: "center",
     padding: 40,
-    borderRadius: 10
+    borderRadius: 10,
   },
 });

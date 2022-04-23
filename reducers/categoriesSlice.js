@@ -4,15 +4,12 @@ let nextCategoryId = 0;
 
 const categoriesSlice = createSlice({
   name: "categories",
-  initialState: ["personal", "official"],
+  initialState: ["House Rent", "Mobile Bill"],
   reducers: {
     addCategory(state, action) {
-      state.push({
-        id: nextCategoryId++,
-        text: action.payload,
-      });
+      state.push(action.payload);
     },
-
+    
   },
 });
 

@@ -1,5 +1,5 @@
 import {
-  SafeAreaView,
+  ScrollView,
   View,
   FlatList,
   StyleSheet,
@@ -26,7 +26,7 @@ const Item = ({ title, category, cost, date }) => (
 );
 export default function ExpnseList() {
   const expenses = useSelector((state) => state.expenses);
-//   console.log(expenses);
+  //   console.log(expenses);
   const renderItem = ({ item }) => (
     <Item
       title={item.title}
@@ -37,11 +37,13 @@ export default function ExpnseList() {
   );
   return (
     <View>
-      <FlatList
-        data={expenses}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
+      <ScrollView>
+        <FlatList
+          data={expenses}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </ScrollView>
     </View>
   );
 }
@@ -52,7 +54,6 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     backgroundColor: "#eaebec",
-    border: 1,
     borderRadius: 4,
     margin: 10,
     padding: 20,
