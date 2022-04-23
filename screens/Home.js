@@ -22,34 +22,74 @@ export default function Home() {
                 style={{ width: 20, height: 20 }}
               />
             ),
+            headerTitleStyle: {
+              fontWeight: "bold",
+              color: "white",
+            },
+            headerStyle: {
+              backgroundColor: "#00669a",
+            },
           }}
           name="Home"
           component={Expenses}
         />
-        <Tab.Screen options={{
+        <Tab.Screen
+          options={{
             tabBarIcon: () => (
               <Image
                 source={require("../assets/budget.png")}
                 style={{ width: 20, height: 20 }}
               />
             ),
-          }} name="My Expenses" component={ExpnseList} />
-        <Tab.Screen options={{
+            headerTitleStyle: {
+              fontWeight: "bold",
+              color: "white",
+            },
+            headerStyle: {
+              backgroundColor: "#00669a",
+            },
+          }}
+          name="My Expenses"
+          component={ExpnseList}
+        />
+        <Tab.Screen
+          options={{
             tabBarIcon: () => (
               <Image
                 source={require("../assets/plus.png")}
                 style={{ width: 20, height: 20 }}
               />
             ),
-          }} name="Add Expense" component={AddExpense} />
-        <Tab.Screen options={{
+            headerTitleStyle: {
+              fontWeight: "bold",
+              color: "white",
+            },
+            headerStyle: {
+              backgroundColor: "#00669a",
+            },
+          }}
+          name="Add Expense"
+          component={AddExpense}
+        />
+        <Tab.Screen
+          options={{
             tabBarIcon: () => (
               <Image
                 source={require("../assets/category.png")}
                 style={{ width: 20, height: 20 }}
               />
             ),
-          }} name="Categories" component={Categories} />
+            headerTitleStyle: {
+              fontWeight: "bold",
+              color: "white",
+            },
+            headerStyle: {
+              backgroundColor: "#00669a",
+            },
+          }}
+          name="Categories"
+          component={Categories}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

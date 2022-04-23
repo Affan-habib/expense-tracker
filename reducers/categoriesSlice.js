@@ -4,7 +4,7 @@ let nextCategoryId = 0;
 
 const categoriesSlice = createSlice({
   name: "categories",
-  initialState: ["House Rent", "Mobile Bill"],
+  initialState: ["House Rent", "Food","Shopping"],
   reducers: {
     addCategory(state, action) {
       state.push(action.payload);
