@@ -9,7 +9,8 @@ export default function Expenses() {
   }, 0);
   return (
     <View style={styles.container}>
-      <Text style={styles.cost}>Total Cost {cost}</Text>
+      <Text style={styles.title}>Your Total Expense is </Text>
+      <Text style={styles.cost}>৳ {cost} </Text>
     </View>
   );
 }
@@ -18,13 +19,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    backgroundColor: "#ccc",
+    backgroundColor: "white",
+  },
+  title: {
+    fontSize: 22,
+    color: '#00669a',
+    textAlign: "center",
+    padding: 5,
+    borderRadius: 10,
   },
   cost: {
     fontSize: 22,
-    color: "blue",
+    backgroundColor: '#00669a',
     textAlign: "center",
-    padding: 40,
+    padding: 10,
     borderRadius: 10,
+    color: "white"
   },
 });

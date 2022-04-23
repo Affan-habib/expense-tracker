@@ -87,7 +87,7 @@ export default function AddExpense() {
               ))}
             </Picker>
             <Button
-              color="blue"
+              color='#00669a'
               title="Save"
               disabled={!isValid}
               onPress={handleSubmit}

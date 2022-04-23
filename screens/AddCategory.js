@@ -44,7 +44,7 @@ export default function AddCategory() {
             <Text style={{ fontSize: 11, color: "red" }}>{errors.name}</Text>
           )}
           <Button
-            color="blue"
+            color='#00669a'
             title="Save"
             disabled={!isValid}
             onPress={handleSubmit}

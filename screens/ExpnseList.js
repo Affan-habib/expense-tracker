@@ -37,6 +37,7 @@ export default function ExpnseList() {
   );
   return (
     <View>
+      <Text style={styles.list}>Expense List</Text>
         <FlatList
           data={expenses}
           renderItem={renderItem}
@@ -53,30 +54,39 @@ const styles = StyleSheet.create({
   itemContainer: {
     backgroundColor: "#eaebec",
     borderRadius: 4,
-    margin: 10,
+    margin: 5,
     padding: 20,
   },
   item: {
     backgroundColor: "red",
-    padding: 5,
+    padding: 2,
     marginVertical: 2,
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 20,
+    fontSize: 16,
     color: "#00669a",
   },
   cost: {
-    fontSize: 20,
+    fontSize: 16,
     alignSelf: "flex-end",
     color: "#00669a",
   },
   date: {
-    fontSize: 16,
+    fontSize: 14,
     color: "#00669a",
   },
   category: {
-    fontSize: 16,
+    fontSize: 14,
     color: "#b39a60",
   },
+  list : {
+    fontSize: 20,
+    textAlign: 'center',
+    borderRadius: 4,
+    padding: 5,
+    margin: 10,
+    backgroundColor: '#00669a',
+    color: "white",
+  }
 });
