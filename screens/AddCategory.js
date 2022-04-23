@@ -2,7 +2,7 @@ import React from "react";
 import { Button, TextInput, View, StyleSheet } from "react-native";
 import { Formik } from "formik";
 
-export default function AddExpense() {
+export default function AddCategory() {
   return (
     <View>
       <Formik
@@ -17,20 +17,6 @@ export default function AddExpense() {
               value={values.title}
               style={styles.input}
             />
-            <TextInput
-              onChangeText={handleChange("cost")}
-              onBlur={handleBlur("cost")}
-              value={values.cost}
-              style={styles.input}
-              keyboardType="numeric"
-            />
-            <TextInput
-              onChangeText={handleChange("category")}
-              onBlur={handleBlur("category")}
-              value={values.category}
-              style={styles.input}
-            />
-            
             <Button onPress={handleSubmit} title="Submit" />
           </View>
         )}
