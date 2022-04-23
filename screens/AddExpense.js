@@ -1,26 +1,38 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput, Alert, Button, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  Button,
+  View,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import { addCategory } from "../reducers/categoriesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addExpense } from "../reducers/expensesSlice";
+// import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function AddExpense() {
   const dispatch = useDispatch();
-
+  const categories = useSelector((state) => state.categories);
   return (
     <View style={styles.mainWrapper}>
       <Formik
         initialValues={{
           title: "",
+          cost: undefined,
+          category: undefined,
         }}
         onSubmit={(values, actions) => {
           actions.resetForm();
-          dispatch(addCategory(values.title));
+          console.log(values);
+          dispatch(addExpense(values));
         }}
         validationSchema={yup.object().shape({
           title: yup.string().required("Name is required."),
           cost: yup.number().required("Cost is required."),
+          category: yup.string().required("Category is required."),
         })}
       >
         {({
@@ -31,6 +43,7 @@ export default function AddExpense() {
           handleChange,
           isValid,
           handleSubmit,
+          setFieldValue,
         }) => (
           <View>
             <TextInput
@@ -41,18 +54,31 @@ export default function AddExpense() {
               placeholder="Expense Title"
             />
             {touched.title && errors.title && (
-              <Text style={{ fontSize: 11, color: "red" }}>{errors.title}</Text>
+              <Text style={{ fontSize: 11, color: "red" ,marginBottom:15}}>{errors.title}</Text>
             )}
             <TextInput
               value={values.cost}
               style={styles.customCss}
               onBlur={() => setFieldTouched("cost")}
               onChangeText={handleChange("cost")}
-              placeholder="Expense Cost"
+              keyboardType="numeric"
+              placeholder="Enter your cost"
             />
-            {touched.cost && errors.cost && (
-              <Text style={{ fontSize: 11, color: "red" }}>{errors.cost}</Text>
-            )}
+              {touched.cost && errors.cost && (
+                <Text style={{ fontSize: 11, color: "red" }}>{errors.cost}</Text>
+              )}
+            <Picker
+              selectedValue="Select Category"
+              mode="dropdown"
+              style={styles.customCss}
+              onValueChange={(itemValue, itemIndex) =>
+                setFieldValue("category", itemValue)
+              }
+            >
+              {categories.map((c,index) => (
+                <Picker.Item key={index} label={c} value={c} />
+              ))}
+            </Picker>
             <Button
               color="blue"
               title="Save"
@@ -62,7 +88,6 @@ export default function AddExpense() {
           </View>
         )}
       </Formik>
-      {/* <Categories/> */}
     </View>
   );
 }

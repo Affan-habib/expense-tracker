@@ -29,6 +29,7 @@ export default function ExpnseList() {
   //   console.log(expenses);
   const renderItem = ({ item }) => (
     <Item
+      key={item.id}
       title={item.title}
       category={item.category}
       date={item.date}

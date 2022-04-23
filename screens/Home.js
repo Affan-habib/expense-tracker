@@ -13,9 +13,9 @@ import Expenses from "./Expenses";
   return (
       <NavigationContainer>
         <Tab.Navigator>
-          <Tab.Screen name="Expenses" component={Expenses} />
-          <Tab.Screen name="ExpnseList" component={ExpnseList} />
-          <Tab.Screen name="AddExpense" component={AddExpense} />
+          <Tab.Screen name="Home" component={Expenses} />
+          <Tab.Screen name="My Expenses" component={ExpnseList} />
+          <Tab.Screen name="Add Expense" component={AddExpense} />
           <Tab.Screen name="Categories" component={Categories} />
         </Tab.Navigator>
       </NavigationContainer>
