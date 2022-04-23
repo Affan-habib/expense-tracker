@@ -1,5 +1,4 @@
 import {
-  ScrollView,
   View,
   FlatList,
   StyleSheet,
@@ -11,7 +10,7 @@ import { useSelector } from "react-redux";
 const Item = ({ title, category, cost, date }) => (
   <View style={styles.itemContainer}>
     <View style={{ flexDirection: "row" }}>
-      <View style={{ flex: 3 }}>
+      <View style={{ flex: 1 }}>
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={{ flex: 1 }}>
@@ -38,13 +37,11 @@ export default function ExpnseList() {
   );
   return (
     <View>
-      <ScrollView>
         <FlatList
           data={expenses}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
-      </ScrollView>
     </View>
   );
 }

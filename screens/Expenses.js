@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet ,Image} from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
 // import DatePicker from "../components/DatePicker";
@@ -10,7 +10,6 @@ export default function Expenses() {
   return (
     <View style={styles.container}>
       <Text style={styles.cost}>Total Cost {cost}</Text>
-      {/* <DatePicker /> */}
     </View>
   );
 }
@@ -19,11 +18,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    backgroundColor: "#00669a",
+    backgroundColor: "#ccc",
   },
   cost: {
     fontSize: 22,
-    color: "white",
+    color: "blue",
     textAlign: "center",
     padding: 40,
     borderRadius: 10,

@@ -1,11 +1,5 @@
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  Button,
-  View,
-} from "react-native";
+import React, { useRef } from "react";
+import { StyleSheet, Text, TextInput, Button, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -16,6 +10,15 @@ import { addExpense } from "../reducers/expensesSlice";
 export default function AddExpense() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
+  const pickerRef = useRef();
+
+  function open() {
+    pickerRef.current.focus();
+  }
+
+  function close() {
+    pickerRef.current.blur();
+  }
   return (
     <View style={styles.mainWrapper}>
       <Formik
@@ -54,7 +57,9 @@ export default function AddExpense() {
               placeholder="Expense Title"
             />
             {touched.title && errors.title && (
-              <Text style={{ fontSize: 11, color: "red" ,marginBottom:15}}>{errors.title}</Text>
+              <Text style={{ fontSize: 11, color: "red", marginBottom: 15 }}>
+                {errors.title}
+              </Text>
             )}
             <TextInput
               value={values.cost}
@@ -64,18 +69,20 @@ export default function AddExpense() {
               keyboardType="numeric"
               placeholder="Enter your cost"
             />
-              {touched.cost && errors.cost && (
-                <Text style={{ fontSize: 11, color: "red" }}>{errors.cost}</Text>
-              )}
+            {touched.cost && errors.cost && (
+              <Text style={{ fontSize: 11, color: "red" }}>{errors.cost}</Text>
+            )}
             <Picker
-              selectedValue="Select Category"
+              ref={pickerRef}
+              selectedValue={values.category}
               mode="dropdown"
               style={styles.customCss}
               onValueChange={(itemValue, itemIndex) =>
                 setFieldValue("category", itemValue)
               }
+              placeholder="Select Category"
             >
-              {categories.map((c,index) => (
+              {categories.map((c, index) => (
                 <Picker.Item key={index} label={c} value={c} />
               ))}
             </Picker>
