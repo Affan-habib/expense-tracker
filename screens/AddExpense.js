@@ -1,81 +1,80 @@
-import React, { useState } from "react";
-import { Button, TextInput, View, StyleSheet } from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, Text, TextInput, Alert, Button, View } from "react-native";
 import { Formik } from "formik";
-import { addExpense } from "../reducers/expensesSlice";
+import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import DatePicker from "react-native-date-picker";
+import { addCategory } from "../reducers/categoriesSlice";
 
 export default function AddExpense() {
   const dispatch = useDispatch();
-  const [date, setDate] = React.useState(new Date());
-  const [open, setOpen] = useState(false);
+
   return (
-    <View>
+    <View style={styles.mainWrapper}>
       <Formik
         initialValues={{
-          id: "255",
           title: "",
-          category: "",
-          date: "",
-          cost: 0,
         }}
         onSubmit={(values, actions) => {
           actions.resetForm();
-          dispatch(addExpense(values));
+          dispatch(addCategory(values.title));
         }}
+        validationSchema={yup.object().shape({
+          title: yup.string().required("Name is required."),
+          cost: yup.number().required("Cost is required."),
+        })}
       >
         {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
           values,
-          setFieldValue,
+          errors,
+          setFieldTouched,
+          touched,
+          handleChange,
+          isValid,
+          handleSubmit,
         }) => (
           <View>
             <TextInput
-              onChangeText={handleChange("title")}
-              onBlur={handleBlur("title")}
               value={values.title}
-              style={styles.input}
-              placeholder="title"
+              style={styles.customCss}
+              onBlur={() => setFieldTouched("title")}
+              onChangeText={handleChange("title")}
+              placeholder="Expense Title"
             />
+            {touched.title && errors.title && (
+              <Text style={{ fontSize: 11, color: "red" }}>{errors.title}</Text>
+            )}
             <TextInput
-              onChangeText={handleChange("category")}
-              onBlur={handleBlur("category")}
-              value={values.category}
-              style={styles.input}
-              placeholder="Category"
-            />
-            <TextInput
-              onChangeText={handleChange("date")}
-              onBlur={handleBlur("date")}
-              value={values.date}
-              style={styles.input}
-              placeholder="Date"
-            />
-            <TextInput
-              onChangeText={handleChange("cost")}
-              onBlur={handleBlur("cost")}
               value={values.cost}
-              style={styles.input}
-              keyboardType="numeric"
-              placeholder="Cost"
+              style={styles.customCss}
+              onBlur={() => setFieldTouched("cost")}
+              onChangeText={handleChange("cost")}
+              placeholder="Expense Cost"
             />
-            <Button title="Open" onPress={() => setOpen(true)} />
-            <DatePicker mode="datetime" date={new Date} />
-            <Button onPress={handleSubmit} title="Submit" />
+            {touched.cost && errors.cost && (
+              <Text style={{ fontSize: 11, color: "red" }}>{errors.cost}</Text>
+            )}
+            <Button
+              color="blue"
+              title="Save"
+              disabled={!isValid}
+              onPress={handleSubmit}
+            />
           </View>
         )}
       </Formik>
+      {/* <Categories/> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
+  customCss: {
     borderWidth: 1,
     padding: 10,
+    marginBottom: 12,
+    borderColor: "#cccccc",
+  },
+  mainWrapper: {
+    padding: 40,
   },
 });
