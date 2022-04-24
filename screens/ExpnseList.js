@@ -14,7 +14,7 @@ const Item = ({ title, category, cost, date }) => (
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={{ flex: 1 }}>
-        <Text style={styles.cost}>Cost : {cost}</Text>
+        <Text style={styles.cost}>৳  {cost}</Text>
       </View>
     </View>
     <View style={{ flexDirection: "row", justifyContent: "space-between" }}>

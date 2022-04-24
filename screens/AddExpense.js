@@ -38,7 +38,7 @@ export default function AddExpense() {
           }}
           onSubmit={(values, actions) => {
             actions.resetForm();
-            console.log(values);
+            // console.log(values);
             dispatch(addExpense(values));
           }}
           validationSchema={yup.object().shape({

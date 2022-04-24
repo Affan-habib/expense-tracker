@@ -9,7 +9,7 @@ import Categories from "./Categories";
 import Expenses from "./Expenses";
 
 const Tab = createBottomTabNavigator();
-console.log(Date);
+// console.log(Date);
 export default function Home() {
   return (
     <NavigationContainer>
