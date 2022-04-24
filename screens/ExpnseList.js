@@ -18,7 +18,7 @@ const Item = ({ title, category, cost, date }) => (
       </View>
     </View>
     <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-      <Text style={styles.date}>Date: {date}</Text>
+      {/* <Text style={styles.date}>Date: {date}</Text> */}
       <Text style={styles.category}>Category:{category}</Text>
     </View>
   </View>
@@ -31,7 +31,7 @@ export default function ExpnseList() {
       key={item.id}
       title={item.title}
       category={item.category}
-      date={item.date}
+      // date={item.date}
       cost={item.cost}
     />
   );

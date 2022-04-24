@@ -33,6 +33,7 @@ export default function AddCategory() {
         handleSubmit,
       }) => (
         <View>
+          <Text style={{fontSize: 18, marginBottom:10}}>Add a new category for expense</Text>
           <TextInput
             value={values.name}
             style={styles.customCss}
